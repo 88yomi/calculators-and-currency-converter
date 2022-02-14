@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 const ApiTest = () => {
 	let url = 'https://free.currconv.com/api/v7/countries?apiKey=5bc1b768d6ae9601014c';
 	let myRes = {};
+	let another;
 
 	useEffect(() => {
 		fetch(url)
@@ -13,12 +14,15 @@ const ApiTest = () => {
 					individual[data.results[key].currencyName] = data.results[key];
 					delete individual[data.results[key].currencyName].currencyName;
 				}
-				console.log(individual);
-				myRes = individual;
+				// console.log(individual);
+				another = Object.entries(individual)
+				console.log(another)
 			})
-	}, [])
-
-	// return myRes;
-	return null;
+		}, [])
+		
+	return (
+		null
+	
+)
 }
 export default ApiTest;

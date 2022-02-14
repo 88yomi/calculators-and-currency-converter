@@ -1,0 +1,18 @@
+header {
+	display: flex;
+	height: 70px;
+	justify-content: space-between;
+	background-color: #090a09;
+}
+
+header nav ul {
+	margin-right: 50px;
+	margin-top: 10px;
+	display: flex;
+}
+
+nav li a {
+	margin-right: 30px;
+	text-decoration: none;
+	color: #d0e4d0;
+}

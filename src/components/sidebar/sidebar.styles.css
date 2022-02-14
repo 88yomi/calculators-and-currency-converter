@@ -1,0 +1,17 @@
+nav.sidebar {
+  position: fixed;
+  overflow: hidden;
+  height: 100%;
+  background-color: blanchedalmond;
+  width: 10vw;
+} 
+
+nav.sidebar ul li {
+  display: flex;
+  flex-direction: column;
+}
+
+nav.sidebar ul li a {
+  color: black;
+}
+

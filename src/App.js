@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { Routes, Route } from 'react-router-dom';
+
 import './App.css';
+
+import Header from './components/header/header.component';
+import Sidebar from './components/sidebar/sidebar.component';
+import Basic from './components/calculator/basic.component';
+import Footer from './components/footer/footer.component';
+import CurrencyConverter from './components/currency-converter/currency.converter.component';
+import BmiCalculator from './components/bmi-calculator/bmi.calculator.component';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Sidebar />
+      <Routes>
+        <Route path='/' element={<Basic />} />
+        <Route path='currency' element={<CurrencyConverter />} />
+        <Route path='bmi' element={<BmiCalculator />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }

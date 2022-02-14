@@ -10,18 +10,18 @@ Basic react app consisting of:
 - [x] API for currency conversion
 - [x] controlled components in BMI
 - [x] react router
-- [] styled components?	
-- []
+- [ ] styled components?	
+- [ ]
 
 
 ## Currency Converter
-- [] do things
+- [ ] do things
 
 ## BMI Calculator
-- [] put class names according to the BEM standards and style
-- [] put labels on the bmi value
-- [] put kg in the appropriate place
-- [] convert from cm to m
-- [] convert from inches to m/cm
-- [] make css values and colour the text based on the range
-- [] render based on the bmi value
+- [ ] put class names according to the BEM standards and style
+- [ ] put labels on the bmi value
+- [ ] put kg in the appropriate place
+- [ ] convert from cm to m
+- [ ] convert from inches to m/cm
+- [ ] make css values and colour the text based on the range
+- [ ] render based on the bmi value

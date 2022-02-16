@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# local api testing
+/src/components/currency-converter/countries.json 
+
+# body mass index reference image
+/src/components/bmi-calculator/bmi.jpeg
+/src/components/bmi-calculator/pls.delete.jsx

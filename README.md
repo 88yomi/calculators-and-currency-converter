@@ -11,8 +11,6 @@ Basic react app consisting of:
 - [x] controlled components in BMI
 - [x] react router
 - [ ] styled components?	
-- [ ]
-
 
 ## Currency Converter
 - [ ] do things

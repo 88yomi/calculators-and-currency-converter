@@ -15,3 +15,12 @@ ul, li {
   text-align: center;
   /* width: 60%; */
 }
+
+main {
+  width: 50%;
+  margin: auto;
+  padding-top: 4rem;
+  height: 100vw;
+  z-index: 10;
+  background-color: rgb(221, 221, 221);
+}

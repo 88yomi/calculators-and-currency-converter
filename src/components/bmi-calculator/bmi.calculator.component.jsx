@@ -25,7 +25,7 @@ const BmiCalculator = () => {
 		// call the function that will run when you click on convert
 	}
 
-	let bmi = Number((kilos / metres).toFixed(2));
+	let bmi = Number((kilos / (metres * metres)).toFixed(2));
 
 
 	return (

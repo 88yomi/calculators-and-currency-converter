@@ -14,14 +14,24 @@ function App() {
     <div className="App">
       <Header />
       <Sidebar />
-      <Routes>
-        <Route path='/' element={<Basic />} />
-        <Route path='currency' element={<CurrencyConverter />} />
-        <Route path='bmi' element={<BmiCalculator />} />
-      </Routes>
+      <Wrapper>
+        <Routes>
+          <Route path='/' element={<Basic />} />
+          <Route path='currency' element={<CurrencyConverter />} />
+          <Route path='bmi' element={<BmiCalculator />} />
+        </Routes>
+      </Wrapper>
       <Footer />
     </div>
   );
+}
+
+function Wrapper({ children }) {
+  return (
+    <main>
+      {children}
+    </main>
+  )
 }
 
 export default App;

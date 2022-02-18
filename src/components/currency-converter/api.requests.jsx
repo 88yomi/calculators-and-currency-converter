@@ -15,15 +15,13 @@ export const getCurrencies = () => {
 		.then(currencies => console.log(currencies))
 }
 
-
 export const convertCurrencies = async (first, second) => {
 	const response = await fetch(urlStart + `convert?q=${first}_${second},${second}_${first}&compact=ultra&` + FULL_API_KEY);
-	const conversion = await response.json();
-	// console.log(Object.values(conversion)[0]);
-	return Object.values(conversion)[0];
+	return await response.json();
+	// return CONVERTED;
 }
 
-		// OFFLINE
+		//  TRY OFFLINE
 // export const convertCurrencies = (first, second) => {
 // 	return Object.values(CONVERTED)[0];
 // }

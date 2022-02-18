@@ -1,0 +1,59 @@
+form.currency {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  label {
+    // border: 1px red dotted;
+    margin-top: 5rem;
+    padding: 0.75rem;
+    visibility: inherit;
+    width: 45%;
+    background-color: rgb(245, 245, 245);
+    border-radius: 12px;
+
+    select {
+      width: 90%;
+      height: 2rem;
+      border-top: 0;
+      border: 0;
+			background-color: inherit;
+    }
+		
+    select:focus {
+			border: 0;
+			outline: 0;
+			// change the background color instead?
+			// background-color: aqua;
+			
+    }
+		
+    input {
+			height: 2rem;
+      width: 90%;
+      border: 0;
+			background-color: inherit;
+    }
+		
+    input:focus {
+			border: 0;
+			outline: 0;
+    }
+  }
+
+  label[for="premiere"] {
+    input {
+      padding: 2px 5px;
+      // width: 50%;
+    }
+  }
+
+  label[for="deuxieme"] {
+    visibility: inherit;
+  }
+
+  button {
+    display: block;
+    width: 30%;
+  }
+}

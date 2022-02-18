@@ -11,13 +11,15 @@ Basic react app consisting of:
 - [x] controlled components in BMI
 - [x] react router
 - [ ] styled components?	
+- [ ] make a mixin of border radius and box shadow
 
 ## Currency Converter
 - [ ] do things
+- [ ] put currency sign if available
 
 ## BMI Calculator
 - [ ] put class names according to the BEM standards and style
-- [ ] put labels on the bmi value
+- [x] put labels on the bmi value
 - [ ] put kg in the appropriate place
 - [ ] convert from cm to m
 - [ ] convert from inches to m/cm

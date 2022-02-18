@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import ApiTest from './api.tests';
+import './currency.converter.styles.scss';
 
 import COUNTRIES from './countries';
 import CURRENCIES from './currencies';
@@ -13,52 +13,53 @@ import {
 	convertCurrencies
 } from './api.requests';
 
-
 let fakeCountriesResObj = Object.entries(COUNTRIES)[0][1];
-// let fakeCurrenciesResObj = Object.entries(CURRENCIES)[0][1];
 let fakeCurrenciesResObj = Object.entries(CURRENCIES)[0];
 
-// console.log({ fakeCountriesResObj, fakeCurrenciesResObj })
 
 const CurrencyConverter = () => {
+	const [firstDropdown, setFirstDropdown] = useState('');
+	const [secondDropdown, setSecondDropdown] = useState('');
 
-	const [first, setFirst] = useState('');
-	const [second, setSecond] = useState('');
+	const [inputOne, setInputOne] = useState(1);
+	const [inputTwo, setInputTwo] = useState(1);
 
-	const [inputOne, setInputOne] = useState(0);
-	const [inputTwo, setInputTwo] = useState(0);
+	const [query, setQuery] = useState('');
 
-	const [serverCurrency, setServerCurrency] = useState(1);
+	const [serverCurrency, setServerCurrency] = useState(0);
 
 	const dropDownOne = useRef(null);
 	const dropDownTwo = useRef(null);
 
+
 	useEffect(() => {
 		document.title = 'Currency Converter';
 		// using useRef to select the default checkboxes on component load
-		setFirst(dropDownOne.current.value);
-		setSecond(dropDownTwo.current.value);
+		setFirstDropdown(dropDownOne.current.value);
+		setSecondDropdown(dropDownTwo.current.value);
 	}, [])
 
 	useEffect(() => {
-		async function convertAndMultiply() {
-			let bareConversion = await convertCurrencies(first, second);
-			let multiplied = await bareConversion;
-			setServerCurrency((multiplied * inputOne).toFixed(2));
+		setQuery(`${firstDropdown}_${secondDropdown}`);
+	}, [firstDropdown, secondDropdown])
+
+	useEffect(() => {
+		const convertInputTwo = async () => {
+			let conversionObject = await convertCurrencies(firstDropdown, secondDropdown);
+			setServerCurrency((inputOne * conversionObject[query]).toFixed(2))
 		}
-		convertAndMultiply();
-	}, [inputOne, first, second])
+		convertInputTwo();
+	}, [inputOne, query])
 
-	let query = `${first}_${second}`;
-	// console.log('query: ' + query)
-
-	const handleChange = e => {
+	const handleSelectChange = e => {
 		if (e.target.name === 'premiere') {
-			setFirst(e.target.value);
+			setQuery(`${firstDropdown}_${secondDropdown}`);
+			setFirstDropdown(e.target.value);
 		}
 
 		else if (e.target.name === 'deuxieme') {
-			setSecond(e.target.value);
+			setQuery(`${secondDropdown}_${firstDropdown}`);
+			setSecondDropdown(e.target.value);
 		}
 	}
 
@@ -75,17 +76,19 @@ const CurrencyConverter = () => {
 		e.preventDefault();
 	}
 
-	// console.log(convertCurrencies(first, second, inputOne))
-
 	return (
 		<div>
-			{<ApiTest />}
 			<form className='currency' onSubmit={handleSubmit}>
-
 				<label htmlFor='premiere'>
+					<input
+						type='number'
+						name='first-number'
+						onChange={handleInputChange}
+						value={inputOne}
+					/>
 					<select
 						name="premiere"
-						onChange={handleChange}
+						onChange={handleSelectChange}
 						defaultValue="USD"
 						ref={dropDownOne}
 					>
@@ -101,20 +104,18 @@ const CurrencyConverter = () => {
 						})
 						}
 					</select>
-					<hr />
-					<input
-						type='number'
-						name='first-number'
-						onChange={handleInputChange}
-						value={inputOne}
-					/>
-					<hr />
 				</label>
 
 				<label htmlFor='deuxieme'>
+					<input
+						type='number'
+						name='second-number'
+						readOnly
+						value={serverCurrency}
+					/>
 					<select
 						name="deuxieme"
-						onChange={handleChange}
+						onChange={handleSelectChange}
 						defaultValue="NGN"
 						ref={dropDownTwo}
 					>
@@ -130,22 +131,7 @@ const CurrencyConverter = () => {
 						})
 						}
 					</select>
-					<hr />
-					<input
-						type='number'
-						name='second-number'
-						onChange={handleInputChange}
-						value={inputTwo}
-					/>
 				</label>
-
-				<hr />
-				<button type="submit">
-					Convert
-				</button>
-				<button>
-					Switch currencies
-				</button>
 			</form>
 			{serverCurrency}
 		</div>

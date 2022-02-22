@@ -1,141 +1,113 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './currency.converter.styles.scss';
 
-import COUNTRIES from './countries';
-import CURRENCIES from './currencies';
-import CONVERTED from './converted';
+const date = 'latest';
+const apiVersion = '1';
 
-import {
-	FULL_API_KEY,
-	urlStart,
-	getCountries,
-	getCurrencies,
-	convertCurrencies
-} from './api.requests';
-
-let fakeCountriesResObj = Object.entries(COUNTRIES)[0][1];
-let fakeCurrenciesResObj = Object.entries(CURRENCIES)[0];
-
+const urlStart = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@${apiVersion}/${date}`;
 
 const CurrencyConverter = () => {
-	const [firstDropdown, setFirstDropdown] = useState('');
-	const [secondDropdown, setSecondDropdown] = useState('');
-
-	const [inputOne, setInputOne] = useState(1);
-	const [inputTwo, setInputTwo] = useState(1);
-
-	const [query, setQuery] = useState('');
-
-	const [serverCurrency, setServerCurrency] = useState(0);
-
 	const dropDownOne = useRef(null);
 	const dropDownTwo = useRef(null);
 
+	const [currencyList, setCurrencyList] = useState({})
 
+	const [inputOne, setInputOne] = useState(0);
+	const [inputTwo, setInputTwo] = useState(0);
+
+	const [selectOne, setSelectOne] = useState('usd')
+	const [selectTwo, setSelectTwo] = useState('ngn')
+
+
+	// get the list of currencies obj
 	useEffect(() => {
-		document.title = 'Currency Converter';
-		// using useRef to select the default checkboxes on component load
-		setFirstDropdown(dropDownOne.current.value);
-		setSecondDropdown(dropDownTwo.current.value);
+		async function listCurr() {
+			let response = await fetch(`${urlStart}/currencies.json`)
+			let data = await response.json();
+			setCurrencyList(data);
+		}
+		listCurr();
 	}, [])
 
+	// get the exchange rate and multiply it by the value of the 1st input field
 	useEffect(() => {
-		setQuery(`${firstDropdown}_${secondDropdown}`);
-	}, [firstDropdown, secondDropdown])
-
-	useEffect(() => {
-		const convertInputTwo = async () => {
-			let conversionObject = await convertCurrencies(firstDropdown, secondDropdown);
-			setServerCurrency((inputOne * conversionObject[query]).toFixed(2))
+		async function getCurrencyCompare() {
+			fetch(`${urlStart}/currencies/${dropDownOne.current.value}/${dropDownTwo.current.value}.json`)
+				.then(response => response.json())
+				.then(data => {
+					console.log(data[dropDownTwo.current.value])
+					setInputTwo((data[dropDownTwo.current.value] * inputOne).toFixed(2))
+				})
 		}
-		convertInputTwo();
-	}, [inputOne, query])
+		getCurrencyCompare();
+	}, [inputOne, selectOne, selectTwo])
+
+
+	const handleChange = e => {
+		setInputOne(e.target.value);
+	}
 
 	const handleSelectChange = e => {
-		if (e.target.name === 'premiere') {
-			setQuery(`${firstDropdown}_${secondDropdown}`);
-			setFirstDropdown(e.target.value);
+		if (e.target.name === 'selectOne') {
+			setSelectOne(e.target.value);
 		}
-
-		else if (e.target.name === 'deuxieme') {
-			setQuery(`${secondDropdown}_${firstDropdown}`);
-			setSecondDropdown(e.target.value);
+		else if (e.target.name === 'selectTwo') {
+			setSelectTwo(e.target.value);
 		}
 	}
-
-	const handleInputChange = e => {
-		if (e.target.name === 'first-number') {
-			setInputOne(e.target.value);
-		}
-		if (e.target.name === 'second-number') {
-			setInputTwo(e.target.value);
-		}
-	}
-
-	const handleSubmit = e => {
-		e.preventDefault();
-	}
-
 	return (
 		<div>
-			<form className='currency' onSubmit={handleSubmit}>
-				<label htmlFor='premiere'>
+			<form className='currency'>
+				<label htmlFor="selectOne">
 					<input
-						type='number'
-						name='first-number'
-						onChange={handleInputChange}
+						name="selectOne"
 						value={inputOne}
+						onChange={handleChange}
+						type="number"
+						min='1'
 					/>
 					<select
-						name="premiere"
-						onChange={handleSelectChange}
-						defaultValue="USD"
+						name='selectOne'
 						ref={dropDownOne}
+						onChange={handleSelectChange}
+						value={selectOne}
 					>
-						{Object.keys(fakeCurrenciesResObj[1]).map(item => {
-							return (
-								<option
-									key={item}
-									value={item}
-								>
-									{fakeCurrenciesResObj[1][item].currencyName}
-								</option>
-							)
-						})
-						}
+						{Object.entries(currencyList).map(item => {
+							return <option
+								key={item[0]}
+								value={item[0]}>
+								{item[1]}
+							</option>
+						})}
 					</select>
 				</label>
 
-				<label htmlFor='deuxieme'>
+				<label htmlFor="selectTwo">
 					<input
-						type='number'
-						name='second-number'
+						name='selectTwo'
+						type="number"
 						readOnly
-						value={serverCurrency}
+						value={inputTwo}
+						min='1'
 					/>
 					<select
-						name="deuxieme"
-						onChange={handleSelectChange}
-						defaultValue="NGN"
+						name="selectTwo"
 						ref={dropDownTwo}
+						onChange={handleSelectChange}
+						value={selectTwo}
 					>
-						{Object.keys(fakeCurrenciesResObj[1]).map(item => {
-							return (
-								<option
-									key={item}
-									value={item}
-								>
-									{fakeCurrenciesResObj[1][item].currencyName}
-								</option>
-							)
-						})
-						}
+						{Object.entries(currencyList).map(item => {
+							return <option
+								key={item[0]}
+								value={item[0]}>
+								{item[1]}
+							</option>
+						})}
 					</select>
 				</label>
 			</form>
-			{serverCurrency}
 		</div>
 	)
-};
+}
 
 export default CurrencyConverter;

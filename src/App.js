@@ -8,6 +8,7 @@ import Basic from './components/calculator/basic.component';
 import Footer from './components/footer/footer.component';
 import CurrencyConverter from './components/currency-converter/currency.converter.component';
 import BmiCalculator from './components/bmi-calculator/bmi.calculator.component';
+import { About, Contact } from './components/bmi-calculator/pages/pages.component';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
       <Sidebar />
       <Wrapper>
         <Routes>
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
           <Route path='/' element={<Basic />} />
           <Route path='currency' element={<CurrencyConverter />} />
           <Route path='bmi' element={<BmiCalculator />} />

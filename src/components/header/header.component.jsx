@@ -1,23 +1,32 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../../logo.svg';
-import './header.styles.css';
+import './header.styles.scss';
 
 const Header = () => (
 	<header>
 		<div className="icon">
-			<Logo height='30px' />
+			<Link to="/">
+				<Logo height='30px' />
+			</Link>
 		</div>
 		<nav>
 			<ul>
 				<li>
-					<a href="#">Home</a>
+					<Link to="/">
+						Home
+					</Link>
 				</li>
 				<li>
-					<a href="#">Contact</a>
+					<Link to="contact">
+						Contact
+					</Link>
 				</li>
 				<li>
-					<a href="#">About</a>
+					<Link to="about">
+						About
+					</Link>
 				</li>
 			</ul>
 		</nav>

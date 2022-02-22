@@ -1,0 +1,54 @@
+.navigation {
+  position: relative;
+
+  button {
+    position: absolute;
+    left: 2rem;
+    // because the header is 3rem high
+    top: calc(1rem + 3rem);
+    z-index: 100;
+    margin: 0;
+    width: 3rem;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  overflow: hidden;
+  height: 100%;
+  background-color: blanchedalmond;
+  transform: translate(0);
+  transition: transform 1s;
+
+  // width: 12rem;
+  width: auto;
+  padding: 1rem;
+
+  &.hide {
+    display: inherit;
+    transform: translate(-100%);
+  }
+
+  & ul {
+    margin-top: calc(1rem + 3rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+  }
+
+  & ul li {
+    display: block;
+    cursor: pointer;
+    margin: 0.5rem 0;
+    // border-top:1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  & ul li a {
+    color: black;
+  }
+}

@@ -13,7 +13,10 @@ const BmiInput = ({ measure, unit, handleChange }) => {
 				name={measure}
 				value={unit}
 				min="1"
-				onChange={handleChange} />
+				max={measure === 'height' ? 10 : ''}
+				onChange={handleChange}
+				step='0.01'
+			/>
 		</label>
 	)
 }

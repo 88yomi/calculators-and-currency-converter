@@ -5,6 +5,10 @@ Basic react app consisting of:
 * Currency converter
 * Body Mass Index (BMI) Calculator
 
+Currency Converter API in use:
+* [Free Currency Rates API](https://github.com/fawazahmed0/currency-api#readme)
+* Formerly used: [Currency Converter API](https://www.currencyconverterapi.com/docs)
+
 
 ## **things left to implement**
 - [x] API for currency conversion
@@ -12,15 +16,19 @@ Basic react app consisting of:
 - [x] react router
 - [ ] styled components?	
 - [ ] make a mixin of border radius and box shadow
+- [ ] choose a colour scheme
 
 ## Currency Converter
-- [ ] do things
 - [ ] put currency sign if available
+- [ ] set the locale for displaying the numbers in thousands 
+
 
 ## BMI Calculator
+- [ ] limit max length of input fields and set decimals to be always two points.
+- [ ] maybe change the input type to a text but use pattern to limit it to a few numbers and the decimal point thing
 - [ ] put class names according to the BEM standards and style
 - [x] put labels on the bmi value
-- [ ] put kg in the appropriate place
+- [x] put kg in the appropriate place
 - [ ] convert from cm to m
 - [ ] convert from inches to m/cm
 - [ ] make css values and colour the text based on the range

@@ -21,6 +21,8 @@ const CurrencyConverter = () => {
 
 	// get the list of currencies obj
 	useEffect(() => {
+		document.title = 'Currency Converter'
+
 		async function listCurr() {
 			let response = await fetch(`${urlStart}/currencies.json`)
 			let data = await response.json();

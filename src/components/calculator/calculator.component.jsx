@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Wrapper from './wrapper.component';
 import Screen from './screen.component';
@@ -6,8 +6,8 @@ import ButtonBox from './buttonbox.component';
 import Button from './button.component';
 
 const btnValues = [
-	["C", "+-", "%", "/"],
-	[7, 8, 9, "X"],
+	["C", "±", "%", "÷"],
+	[7, 8, 9, "×"],
 	[4, 5, 6, "-"],
 	[1, 2, 3, "+"],
 	[0, ".", "="],
@@ -22,6 +22,9 @@ const removeSpaces = (num) => {
 }
 
 const Calculator = () => {
+	// set document.title
+	useEffect(() => document.title = 'Calculator', [])
+	
 	let [calc, setCalc] = useState({
 		sign: "",
 		num: 0,
@@ -75,14 +78,14 @@ const Calculator = () => {
 					? a + b
 					: sign === "-"
 						? a - b
-						: sign === "X"
+						: sign === "×"
 							? a * b
 							: a / b;
 
 			setCalc({
 				...calc,
 				res:
-					calc.num === "0" && calc.sign === "/"
+					calc.num === "0" && calc.sign === "÷"
 						? "Can't divide with 0"
 						: toLocaleString(
 							math(
@@ -141,13 +144,13 @@ const Calculator = () => {
 							onClick={
 								btn === "C"
 									? resetClickHandler
-									: btn === "+-"
+									: btn === "±"
 										? invertClickHandler
 										: btn === "%"
 											? percentClickHandler
 											: btn === "="
 												? equalsClickHandler
-												: btn === "/" || btn === "X" || btn === "-" || btn === "+"
+												: btn === "÷" || btn === "×" || btn === "-" || btn === "+"
 													? signClickHandler
 													: btn === "."
 														? commaClickHandler

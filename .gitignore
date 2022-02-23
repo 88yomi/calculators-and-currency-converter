@@ -22,8 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local api testing
-/src/components/currency-converter/countries.json 
+# local workings
+/DNTREAD.md
 
 # body mass index reference image
 /src/components/bmi-calculator/bmi.jpeg

@@ -1,0 +1,17 @@
+$dark: #2d4d74;
+$semilight: #76bfce;
+$light: #f1ffff;
+$darkest: #152826;
+$reddish: #c6361c;
+
+footer {
+	display: block;
+	background-color: #090a09;
+	color: $light;
+	background-color: $darkest;
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	height: 2.5rem;
+	width: 100%;
+}

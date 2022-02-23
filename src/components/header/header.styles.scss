@@ -1,3 +1,9 @@
+$dark: #2d4d74;
+$semilight: #76bfce;
+$light: #f1ffff;
+$darkest: #152826;
+$reddish: #c6361c;
+
 header {
 	position: fixed;
 	width: 100vw;
@@ -6,7 +12,7 @@ header {
 	height: 3rem;
 	display: flex;
 	justify-content: space-between;
-	background-color: #090a09;
+	background-color: $darkest;
 }
 
 header .icon {
@@ -24,6 +30,6 @@ header nav ul {
 nav li a {
 	margin-right: 30px;
 	text-decoration: none;
-	color: #d0e4d0;
+	color: $light;
 }
 

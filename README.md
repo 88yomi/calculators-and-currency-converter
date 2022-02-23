@@ -5,9 +5,12 @@ Basic react app consisting of:
 * Currency converter
 * Body Mass Index (BMI) Calculator
 
-Currency Converter API in use:
-* [Free Currency Rates API](https://github.com/fawazahmed0/currency-api#readme)
-* Formerly used: [Currency Converter API](https://www.currencyconverterapi.com/docs)
+Currency Converter API used:
+* Currently: [Free Currency Rates API](https://github.com/fawazahmed0/currency-api#readme)
+* Previously: [Currency Converter API](https://www.currencyconverterapi.com/docs)
+
+Calculator made with the help of:
+* [Madars Bliss on Sitepoint](https://www.sitepoint.com/react-tutorial-build-calculator-app/)
 
 
 ## **things left to implement**

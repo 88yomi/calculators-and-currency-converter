@@ -5,7 +5,7 @@ import './sidebar.styles.scss';
 
 
 const Sidebar = () => {
-	const [show, toggle] = useState(false);
+	const [show, toggle] = useState(true);
 
 	const handleNavClick = () => {
 		toggle(!show);

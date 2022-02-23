@@ -1,3 +1,10 @@
+$dark: #2d4d74;
+$semilight: #76bfce;
+$light: #f1ffff;
+$darkest: #152826;
+$reddish: #c6361c;
+$mobilemax: 768px;
+
 form.currency {
   display: flex;
   flex-direction: row;
@@ -55,5 +62,16 @@ form.currency {
   button {
     display: block;
     width: 30%;
+  }
+}
+
+@media screen and (max-width: $mobilemax) {
+  form.currency {
+    flex-direction: column;
+
+    label {
+      width: 90%;
+      margin: 5rem auto 0 auto;
+    }
   }
 }

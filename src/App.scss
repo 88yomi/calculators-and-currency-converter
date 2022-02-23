@@ -3,6 +3,8 @@ $semilight: #76bfce;
 $light: #f1ffff;
 $darkest: #152826;
 $reddish: #c6361c;
+$mobilemax: 768px;
+
 
 * {
   box-sizing: border-box;
@@ -24,9 +26,16 @@ li {
 }
 
 main {
-  width: 50%;
   margin: auto;
   padding-top: 4rem;
   height: 100vh;
   z-index: 10;
+  width: 50%;
+}
+
+
+@media screen and (max-width: $mobilemax) {
+  main {
+    width: 100%;
+  }
 }

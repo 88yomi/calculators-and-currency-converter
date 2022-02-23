@@ -1,3 +1,10 @@
+$dark: #2d4d74;
+$semilight: #76bfce;
+$light: #f1ffff;
+$darkest: #152826;
+$reddish: #c6361c;
+$mobilemax: 768px;
+
 .bmi {
   width: 100%;
   height: 20rem;
@@ -21,8 +28,8 @@
       width: 100%;
       padding-left: 0rem;
       height: 40%;
-    
-      &::first-letter{
+
+      &::first-letter {
         text-transform: capitalize;
       }
     }
@@ -55,6 +62,27 @@
     & article:first-child {
       font-size: 1.5rem;
       font-weight: 500;
+    }
+  }
+}
+
+@media screen and (max-width: $mobilemax) {
+  .bmi {
+    width: 90%;
+    flex-direction: column;
+    height: 25rem;
+    justify-content: center;
+    align-items: center;
+
+    &__form {
+      width: 90%;
+      margin-left: auto;
+    }
+
+    & section {
+      width: auto;
+      height: 10rem;
+      display: block;
     }
   }
 }

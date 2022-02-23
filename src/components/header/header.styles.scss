@@ -3,33 +3,38 @@ $semilight: #76bfce;
 $light: #f1ffff;
 $darkest: #152826;
 $reddish: #c6361c;
+$mobilemax: 768px;
 
 header {
-	position: fixed;
-	width: 100vw;
-	z-index: 20;
-	
-	height: 3rem;
-	display: flex;
-	justify-content: space-between;
-	background-color: $darkest;
+  position: fixed;
+  width: 100vw;
+  z-index: 20;
+
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: $darkest;
+
+  & .icon {
+    margin: 0.5rem 0 0 0.5rem;
+    width: 3rem;
+  }
+
+  & nav ul {
+    margin-right: 50px;
+    margin-top: 10px;
+    display: flex;
+
+    & li a {
+      margin-right: 30px;
+      text-decoration: none;
+      color: $light;
+    }
+  }
 }
 
-header .icon {
-	margin: 0.5rem 0 0 0.5rem;
-	width: 3rem;
+@media screen and (max-width: $mobilemax) {
+  header nav ul {
+		margin-right: 0;
+	}
 }
-
-
-header nav ul {
-	margin-right: 50px;
-	margin-top: 10px;
-	display: flex;
-}
-
-nav li a {
-	margin-right: 30px;
-	text-decoration: none;
-	color: $light;
-}
-
